@@ -62,11 +62,13 @@ export class ApiService {
     );
   }
 
-  public transaction_get() {
+  public transaction_get(token) {
 
     this.storeService.setLoaderData('block');
 
-    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    const headers = new HttpHeaders()
+    .set('Content-Type', 'application/json')
+    .append('authorization', 'Bearer ' + token);
 
     return this.httpClient.get(this.baseURL + 'transactions/', {
       headers: headers

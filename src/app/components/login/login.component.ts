@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ApiService } from 'src/app/services/api.service';
 import { StoreService } from 'src/app/services/store.service';
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit {
   public password: String;
   private loginApiSubscription: Subscription
 
-  constructor(private apiService: ApiService, private storeService: StoreService) { }
+  constructor(private apiService: ApiService, private storeService: StoreService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -33,12 +34,13 @@ export class LoginComponent implements OnInit {
 
         console.log(data);
 
-        if(data.status) {
-
+        if (data.status) {
+          localStorage.setItem("authorization", data.data.authorizartion);
+          this.router.navigate(['dashboard']);
         } else {
           alert(data.msg)
         }
-        
+
         this.loginApiSubscription.unsubscribe();
       }
     )

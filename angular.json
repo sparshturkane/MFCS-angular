@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "mfc-angular"
+    }
+  },
+  "defaultProject": "mfc-angular",
+  "cli": {
+    "analytics": "325069c4-55e8-413e-8854-4843e41db813"
+  }
 }

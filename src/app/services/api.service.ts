@@ -20,7 +20,7 @@ export class ApiService {
 
     const headers = new HttpHeaders()
       .set('Content-Type', 'application/json');
-    return this.httpClient.post(this.baseURL + 'register', postParams, {
+    return this.httpClient.post(this.baseURL + 'users/register', postParams, {
       headers: headers
     }).subscribe(
       (data) => {
@@ -44,7 +44,7 @@ export class ApiService {
 
     const headers = new HttpHeaders()
       .set('Content-Type', 'application/json');
-    return this.httpClient.post(this.baseURL + 'register', postParams, {
+    return this.httpClient.post(this.baseURL + 'users/login', postParams, {
       headers: headers
     }).subscribe(
       (data) => {
@@ -68,7 +68,7 @@ export class ApiService {
 
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
 
-    return this.httpClient.get(this.baseURL + 'transaction/', {
+    return this.httpClient.get(this.baseURL + 'transactions/', {
       headers: headers
     }).subscribe(
       (data) => {
@@ -94,7 +94,7 @@ export class ApiService {
       .set('Content-Type', 'application/json')
       .append('authorization', 'Bearer ' + token);
 
-    return this.httpClient.post(this.baseURL + 'transaction/', postParams, {
+    return this.httpClient.post(this.baseURL + 'transactions/', postParams, {
       headers: headers
     }).subscribe(
       (data) => {
@@ -121,7 +121,7 @@ export class ApiService {
       .set('Content-Type', 'application/json')
       .append('authorization', 'Bearer ' + token);
 
-    return this.httpClient.patch(this.baseURL + 'transaction/' + postParams, {
+    return this.httpClient.patch(this.baseURL + 'transactions/' + postParams, {
       headers: headers
     }).subscribe(
       (data) => {
@@ -148,7 +148,7 @@ export class ApiService {
       .set('Content-Type', 'application/json')
       .append('authorization', 'Bearer ' + token);
 
-    return this.httpClient.delete(this.baseURL + 'transaction/' + postParams, {
+    return this.httpClient.delete(this.baseURL + 'transactions/' + postParams, {
       headers: headers
     }).subscribe(
       (data) => {

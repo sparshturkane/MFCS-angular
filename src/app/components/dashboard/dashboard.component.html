@@ -1,6 +1,6 @@
 <div class="container">
     <div class="table-responsive">
-        
+
         <table class="table table-condensed ">
             <thead>
                 <tr>
@@ -19,10 +19,13 @@
                     <td>{{transaction.amount}}</td>
                     <td>{{transaction.type}}</td>
                     <td>
-                        <button class="btn btn-primary"> Edit </button>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editTransaction"
+                            (click)="onClickEdit(transaction.customerName, transaction.amount, transaction.description, transaction.type, transaction._id)">
+                            Edit
+                        </button>
                     </td>
                     <td>
-                        <button class="btn btn-warning"> Delete </button>
+                        <button class="btn btn-warning" (click)="deleteTransaction(transaction._id)"> Delete </button>
                     </td>
                 </tr>
             </tbody>
@@ -30,5 +33,86 @@
 
     </div>
 
-    <button class="btn btn-primary"> Add </button>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addTransaction"> Add </button>
+
+
+
+    <!-- Edit -->
+    <div class="modal fade" id="editTransaction" role="dialog">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <!-- <h4 class="modal-title">Modal Header</h4> -->
+                </div>
+                <div class="modal-body">
+
+                    <form ngNativeValidate (ngSubmit)="editTransaction()">
+                        <div class="form-group">
+                            <label for="customerName">Customer Name:</label>
+                            <input type="text" class="form-control" id="customerName" name="updateCustomerName" [(ngModel)]="updateCustomerName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Description:</label>
+                            <input type="text" class="form-control" id="description" name="updateAmount" [(ngModel)]="updateAmount" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="amount">Amount:</label>
+                            <input type="text" class="form-control" id="amount" name="updateDescription" [(ngModel)]="updateDescription" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="type">Type:</label>
+                            <select class="form-control" id="type" name="updateType" [(ngModel)]="updateType" required>
+                                <option value="Credit">Credit</option>
+                                <option value="Debit">Debit</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Update</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit -->
+    <div class="modal fade" id="addTransaction" role="dialog">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <!-- <h4 class="modal-title">Modal Header</h4> -->
+                </div>
+                <div class="modal-body">
+
+                    <form ngNativeValidate (ngSubmit)="addTransaction()">
+                        <div class="form-group">
+                            <label for="customerName">Customer Name:</label>
+                            <input type="text" class="form-control" id="customerName" name="customerName" [(ngModel)]="customerName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Description:</label>
+                            <input type="text" class="form-control" id="description" name="amount" [(ngModel)]="amount" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="amount">Amount:</label>
+                            <input type="text" class="form-control" id="amount" name="description" [(ngModel)]="description" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="type">Type:</label>
+                            <select class="form-control" id="type" name="type" [(ngModel)]="type" required>
+                                <option value="Credit">Credit</option>
+                                <option value="Debit">Debit</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Add</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>

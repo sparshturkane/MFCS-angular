@@ -67,8 +67,8 @@ export class ApiService {
     this.storeService.setLoaderData('block');
 
     const headers = new HttpHeaders()
-    .set('Content-Type', 'application/json')
-    .append('authorization', 'Bearer ' + token);
+      .set('Content-Type', 'application/json')
+      .append('authorization', 'Bearer ' + token);
 
     return this.httpClient.get(this.baseURL + 'transactions/', {
       headers: headers
@@ -123,7 +123,7 @@ export class ApiService {
       .set('Content-Type', 'application/json')
       .append('authorization', 'Bearer ' + token);
 
-    return this.httpClient.patch(this.baseURL + 'transactions/' + postParams, {
+    return this.httpClient.patch(this.baseURL + 'transactions/' + postParams.transactionId, postParams, {
       headers: headers
     }).subscribe(
       (data) => {
